@@ -1,5 +1,5 @@
 {
-  "version": "v1.14.11",
+  "version": "1.14.11",
   "description": "CLI for inference.sh — run AI apps, manage skills, connect MCP servers",
   "homepage": "https://inference.sh",
   "license": "MIT",
@@ -12,7 +12,8 @@
   "bin": "belt.exe",
   "checkver": {
     "url": "https://dist.inference.sh/cli/manifest.json",
-    "jsonpath": "$.version"
+    "jsonpath": "$.version",
+    "regex": "v?([\\d.]+)"
   },
   "autoupdate": {
     "architecture": {
