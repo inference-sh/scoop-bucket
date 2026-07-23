@@ -6,7 +6,7 @@
   "architecture": {
     "64bit": {
       "url": "https://dist.inference.sh/cli/v1.15.30/inferencesh-cli-v1.15.30-windows-amd64.zip",
-      "hash": "c0edcd0239717c5a306257c67b793ab94d4d5c4a9c4d332fd7a815109cde9fc5"
+      "hash": "6836f0662504da35f16a1b0b05a07a79b4e579e487ef772389c87d4450b5ec67"
     }
   },
   "bin": "belt.exe",
