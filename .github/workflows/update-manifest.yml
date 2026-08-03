@@ -1,0 +1,65 @@
+name: Update manifest
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version tag (e.g. v1.16.21)"
+        required: true
+      sha_windows_amd64:
+        description: "SHA256 for windows-amd64 archive"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update manifest
+        env:
+          VERSION: ${{ inputs.version }}
+          SHA_WINDOWS: ${{ inputs.sha_windows_amd64 }}
+        run: |
+          BARE_VERSION="${VERSION#v}"
+          cat > bucket/belt.json << 'TEMPLATE'
+          {
+            "version": "BARE_VERSION_PLACEHOLDER",
+            "description": "CLI for inference.sh — run AI apps, manage skills, connect MCP servers",
+            "homepage": "https://inference.sh",
+            "license": "MIT",
+            "architecture": {
+              "64bit": {
+                "url": "URL_PLACEHOLDER",
+                "hash": "SHA_PLACEHOLDER"
+              }
+            },
+            "bin": "belt.exe",
+            "checkver": {
+              "url": "https://dist.inference.sh/cli/manifest.json",
+              "jsonpath": "$.version",
+              "regex": "v?([\\d.]+)"
+            },
+            "autoupdate": {
+              "architecture": {
+                "64bit": {
+                  "url": "https://dist.inference.sh/cli/v$version/inferencesh-cli-v$version-windows-amd64.zip"
+                }
+              }
+            }
+          }
+          TEMPLATE
+          sed -i "s|BARE_VERSION_PLACEHOLDER|$BARE_VERSION|" bucket/belt.json
+          sed -i "s|URL_PLACEHOLDER|https://dist.inference.sh/cli/${VERSION}/inferencesh-cli-${VERSION}-windows-amd64.zip|" bucket/belt.json
+          sed -i "s|SHA_PLACEHOLDER|$SHA_WINDOWS|" bucket/belt.json
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add bucket/belt.json
+          git commit -m "belt ${{ inputs.version }}"
+          git push
