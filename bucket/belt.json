@@ -1,12 +1,12 @@
 {
-  "version": "1.17.4",
+  "version": "1.17.5",
   "description": "CLI for inference.sh — run AI apps, manage skills, connect MCP servers",
   "homepage": "https://inference.sh",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://dist.inference.sh/cli/v1.17.4/inferencesh-cli-v1.17.4-windows-amd64.zip",
-      "hash": "983af458c14732c3578d3b363aab259d97c72678e812d692dd0556084b3eefb2"
+      "url": "https://dist.inference.sh/cli/v1.17.5/inferencesh-cli-v1.17.5-windows-amd64.zip",
+      "hash": "960c1cefc92f146af1142c0a6f10da68121a1594257c0bc897cc75effa8be2cf"
     }
   },
   "bin": "belt.exe",
