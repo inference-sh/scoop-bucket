@@ -9,7 +9,7 @@
       "hash": "73556e2f626ddb89a9e5a171b49fbffa6dda0511c07fd95d947d8c87664f1490"
     }
   },
-  "bin": "belt.exe",
+  "bin": [["inferencesh-cli-v1.18.4-windows-amd64.exe", "belt"]],
   "checkver": {
     "url": "https://dist.inference.sh/cli/manifest.json",
     "jsonpath": "$.version",
