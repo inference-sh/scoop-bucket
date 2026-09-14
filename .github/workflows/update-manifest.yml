@@ -37,6 +37,7 @@ jobs:
                 "hash": "SHA_PLACEHOLDER"
               }
             },
+            "pre_install": "Get-ChildItem \"$dir\\inferencesh-cli-*.exe\" | Select-Object -First 1 | Move-Item -Destination \"$dir\\belt.exe\" -Force",
             "bin": "belt.exe",
             "checkver": {
               "url": "https://dist.inference.sh/cli/manifest.json",
