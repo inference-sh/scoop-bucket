@@ -9,13 +9,40 @@
       "hash": "bf17400ae30f8b87747ed38e08d25de76b4bd5dc9963b512525a15a41f9d5861"
     }
   },
-  "bin": "belt.exe",
+  "bin": [
+    [
+      "inferencesh-cli-v1.18.36-windows-amd64.exe",
+      "belt"
+    ],
+    [
+      "inferencesh-cli-v1.18.36-windows-amd64.exe",
+      "infsh"
+    ],
+    [
+      "inferencesh-cli-v1.18.36-windows-amd64.exe",
+      "inferencesh"
+    ]
+  ],
   "checkver": {
     "url": "https://dist.inference.sh/cli/manifest.json",
     "jsonpath": "$.version",
     "regex": "v?([\\d.]+)"
   },
   "autoupdate": {
+    "bin": [
+      [
+        "inferencesh-cli-v$version-windows-amd64.exe",
+        "belt"
+      ],
+      [
+        "inferencesh-cli-v$version-windows-amd64.exe",
+        "infsh"
+      ],
+      [
+        "inferencesh-cli-v$version-windows-amd64.exe",
+        "inferencesh"
+      ]
+    ],
     "architecture": {
       "64bit": {
         "url": "https://dist.inference.sh/cli/v$version/inferencesh-cli-v$version-windows-amd64.zip"

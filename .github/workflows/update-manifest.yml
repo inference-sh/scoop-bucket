@@ -37,13 +37,22 @@ jobs:
                 "hash": "SHA_PLACEHOLDER"
               }
             },
-            "bin": "belt.exe",
+            "bin": [
+              ["EXE_PLACEHOLDER", "belt"],
+              ["EXE_PLACEHOLDER", "infsh"],
+              ["EXE_PLACEHOLDER", "inferencesh"]
+            ],
             "checkver": {
               "url": "https://dist.inference.sh/cli/manifest.json",
               "jsonpath": "$.version",
               "regex": "v?([\\d.]+)"
             },
             "autoupdate": {
+              "bin": [
+                ["inferencesh-cli-v$version-windows-amd64.exe", "belt"],
+                ["inferencesh-cli-v$version-windows-amd64.exe", "infsh"],
+                ["inferencesh-cli-v$version-windows-amd64.exe", "inferencesh"]
+              ],
               "architecture": {
                 "64bit": {
                   "url": "https://dist.inference.sh/cli/v$version/inferencesh-cli-v$version-windows-amd64.zip"
@@ -55,6 +64,8 @@ jobs:
           sed -i "s|BARE_VERSION_PLACEHOLDER|$BARE_VERSION|" bucket/belt.json
           sed -i "s|URL_PLACEHOLDER|https://dist.inference.sh/cli/${VERSION}/inferencesh-cli-${VERSION}-windows-amd64.zip|" bucket/belt.json
           sed -i "s|SHA_PLACEHOLDER|$SHA_WINDOWS|" bucket/belt.json
+          # The zip ships the versioned exe name, not belt.exe.
+          sed -i "s|EXE_PLACEHOLDER|inferencesh-cli-${VERSION}-windows-amd64.exe|g" bucket/belt.json
 
       - name: Commit and push
         run: |
