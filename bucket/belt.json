@@ -1,18 +1,18 @@
 {
-  "version": "1.19.3",
+  "version": "1.19.4",
   "description": "CLI for inference.sh — run AI apps, manage skills, connect MCP servers",
   "homepage": "https://inference.sh",
   "license": "MIT",
   "architecture": {
     "64bit": {
-      "url": "https://dist.inference.sh/cli/v1.19.3/inferencesh-cli-v1.19.3-windows-amd64.zip",
-      "hash": "e1eea500f3998f6b365af73d39b38074db3e0d406f19c3ac2e96a2f5b38bc0bc"
+      "url": "https://dist.inference.sh/cli/v1.19.4/inferencesh-cli-v1.19.4-windows-amd64.zip",
+      "hash": "d2c29da7f93d724724603573f3ca5e2cf41358155f7fde47695f3eaa2c833e86"
     }
   },
   "bin": [
-    ["inferencesh-cli-v1.19.3-windows-amd64.exe", "belt"],
-    ["inferencesh-cli-v1.19.3-windows-amd64.exe", "infsh"],
-    ["inferencesh-cli-v1.19.3-windows-amd64.exe", "inferencesh"]
+    ["inferencesh-cli-v1.19.4-windows-amd64.exe", "belt"],
+    ["inferencesh-cli-v1.19.4-windows-amd64.exe", "infsh"],
+    ["inferencesh-cli-v1.19.4-windows-amd64.exe", "inferencesh"]
   ],
   "checkver": {
     "url": "https://dist.inference.sh/cli/manifest.json",
